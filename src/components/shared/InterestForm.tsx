@@ -49,12 +49,17 @@ const InterestForm = ({ inquiryType, propertyId, unitId, propertyName, unitName,
 
     setLoading(true);
     try {
-      await submitInterestForm({
-        ...parsed.data,
+      const inquiry: Inquiry = {
+        full_name: parsed.data.full_name,
+        phone: parsed.data.phone,
+        email: parsed.data.email,
+        preferred_contact_method: parsed.data.preferred_contact_method,
+        message: parsed.data.message,
         inquiry_type: inquiryType,
         property_id: propertyId,
         unit_id: unitId,
-      });
+      };
+      await submitInterestForm(inquiry);
       toast.success(t('Thank you! We will be in touch shortly.', 'شكراً لك! سنتواصل معك قريباً.'));
       onClose?.();
     } catch {
