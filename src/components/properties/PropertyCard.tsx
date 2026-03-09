@@ -8,10 +8,10 @@ interface Props {
 }
 
 const statusColors: Record<string, string> = {
-  upcoming: 'bg-primary/10 text-primary',
-  under_construction: 'bg-gold/10 text-gold-dark',
-  ready: 'bg-green-100 text-green-700',
-  sold_out: 'bg-muted text-muted-foreground',
+  upcoming: 'bg-primary/90 text-primary-foreground border border-primary shadow-lg',
+  under_construction: 'bg-gold/90 text-gold-dark border border-gold shadow-lg',
+  ready: 'bg-green-600 text-white border border-green-700 shadow-lg',
+  sold_out: 'bg-muted/80 text-muted-foreground border border-muted shadow-lg',
 };
 
 const statusLabels: Record<string, { en: string; ar: string }> = {
