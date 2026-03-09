@@ -1,15 +1,16 @@
 import { useLanguage } from '@/context/LanguageContext';
-import { BedDouble, Bath, Maximize, Building2, Check, X } from 'lucide-react';
+import { BedDouble, Bath, Maximize, Building2, Check, X, Gem, Waves } from 'lucide-react';
 import type { Unit } from '@/types';
 
 interface Props {
   unit: Unit;
   onInterest: (unit: Unit) => void;
+  index: number;
 }
 
 const availColors: Record<string, string> = {
-  available: 'bg-green-50 text-green-700 border-green-200',
-  reserved: 'bg-amber-50 text-amber-700 border-amber-200',
+  available: 'bg-green-50 text-green-800 border-green-300',
+  reserved: 'bg-amber-50 text-amber-800 border-amber-300',
   sold: 'bg-muted text-muted-foreground border-border',
 };
 
@@ -19,97 +20,144 @@ const availLabels: Record<string, { en: string; ar: string }> = {
   sold: { en: 'Sold', ar: 'مباع' },
 };
 
-const UnitStyleCard = ({ unit, onInterest }: Props) => {
+const UnitStyleCard = ({ unit, onInterest, index }: Props) => {
   const { t, language } = useLanguage();
   const title = language === 'en' ? unit.title_en : unit.title_ar;
   const desc = language === 'en' ? unit.description_en : unit.description_ar;
   const avail = availLabels[unit.availability_status];
+  const isEven = index % 2 === 1;
 
   const specs = [
-    { icon: <Maximize size={16} />, label: `${unit.area_sqm} ${t('sqm', 'م²')}` },
-    { icon: <BedDouble size={16} />, label: `${unit.bedrooms} ${t('Bed', 'غرف')}` },
-    { icon: <Bath size={16} />, label: `${unit.bathrooms} ${t('Bath', 'حمام')}` },
-    { icon: <Building2 size={16} />, label: `${t('Floor', 'الطابق')} ${unit.floor}` },
+    { icon: <Maximize size={18} />, label: t('Area', 'المساحة'), value: `${unit.area_sqm} ${t('sqm', 'م²')}` },
+    { icon: <BedDouble size={18} />, label: t('Bedrooms', 'غرف النوم'), value: unit.bedrooms },
+    { icon: <Bath size={18} />, label: t('Bathrooms', 'الحمامات'), value: unit.bathrooms },
+    { icon: <Gem size={18} />, label: t('Balconies', 'الشرفات'), value: unit.balconies },
+    { icon: <Waves size={18} />, label: t('Living Rooms', 'الصالات'), value: unit.living_rooms },
+    { icon: <Building2 size={18} />, label: t('Floor', 'الطابق'), value: unit.floor },
+  ];
+
+  const boolSpecs = [
+    { label: t("Maid's Room", 'غرفة خادمة'), value: unit.maid_room },
+    { label: t('Laundry Room', 'غرفة غسيل'), value: unit.laundry_room },
   ];
 
   return (
-    <div className="grid gap-0 overflow-hidden rounded-lg border border-border bg-card md:grid-cols-2">
-      {/* Image */}
-      <div className="relative bg-muted">
-        <img
-          src={unit.brochure_image}
-          alt={title}
-          className="h-full min-h-[300px] w-full object-cover md:min-h-[400px]"
-        />
-        <div className="absolute top-4 left-4">
-          <span className="rounded-full bg-accent/90 px-3 py-1 font-body text-xs font-semibold text-accent-foreground backdrop-blur">
-            {unit.style_code}
-          </span>
-        </div>
-      </div>
-
-      {/* Content */}
-      <div className="flex flex-col justify-between p-6 md:p-8">
-        <div>
-          {/* Availability badge */}
-          <div className="mb-4">
-            <span className={`inline-block rounded-full border px-3 py-1 font-body text-xs font-semibold ${availColors[unit.availability_status]}`}>
-              {t(avail.en, avail.ar)}
+    <article className="overflow-hidden rounded-xl border border-border bg-card shadow-sm">
+      <div className={`grid md:grid-cols-2 ${isEven ? 'md:direction-rtl' : ''}`}>
+        {/* ── Image Panel ── */}
+        <div className="relative bg-muted">
+          <img
+            src={unit.brochure_image}
+            alt={title}
+            className="h-full min-h-[340px] w-full object-cover md:min-h-[520px]"
+          />
+          {/* Style code chip */}
+          <div className="absolute top-5 left-5 rtl:left-auto rtl:right-5">
+            <span className="rounded bg-accent/90 px-3.5 py-1.5 font-body text-xs font-bold uppercase tracking-widest text-accent-foreground backdrop-blur-sm">
+              {unit.style_code}
             </span>
           </div>
-
-          <h3 className="font-display text-2xl font-semibold text-foreground mb-2">{title}</h3>
-          <p className="font-body text-sm text-muted-foreground leading-relaxed mb-6">{desc}</p>
-
-          {/* Specs grid */}
-          <div className="grid grid-cols-2 gap-3 mb-6">
-            {specs.map((spec, i) => (
-              <div key={i} className="flex items-center gap-2 rounded-md bg-muted/50 px-3 py-2.5">
-                <span className="text-primary">{spec.icon}</span>
-                <span className="font-body text-sm font-medium text-foreground">{spec.label}</span>
-              </div>
-            ))}
-          </div>
-
-          {/* Additional specs */}
-          <div className="grid grid-cols-2 gap-2 mb-6 font-body text-sm">
-            <div className="flex items-center gap-2 text-muted-foreground">
-              <span>{t('Balconies', 'شرفات')}:</span>
-              <span className="font-medium text-foreground">{unit.balconies}</span>
-            </div>
-            <div className="flex items-center gap-2 text-muted-foreground">
-              <span>{t('Living Rooms', 'صالات')}:</span>
-              <span className="font-medium text-foreground">{unit.living_rooms}</span>
-            </div>
-            <div className="flex items-center gap-2 text-muted-foreground">
-              <span>{t("Maid's Room", 'غرفة خادمة')}:</span>
-              {unit.maid_room ? <Check size={14} className="text-green-600" /> : <X size={14} className="text-muted-foreground" />}
-            </div>
-            <div className="flex items-center gap-2 text-muted-foreground">
-              <span>{t('Laundry', 'غسيل')}:</span>
-              {unit.laundry_room ? <Check size={14} className="text-green-600" /> : <X size={14} className="text-muted-foreground" />}
-            </div>
-          </div>
-
-          {unit.price_starting_from && (
-            <p className="font-body text-sm text-muted-foreground mb-6">
-              {t('Starting from', 'يبدأ من')}{' '}
-              <span className="text-lg font-semibold text-foreground">
-                {unit.price_starting_from.toLocaleString()} {t('OMR', 'ر.ع.')}
-              </span>
-            </p>
-          )}
         </div>
 
-        <button
-          onClick={() => onInterest(unit)}
-          disabled={unit.availability_status === 'sold'}
-          className="w-full rounded-md bg-gradient-gold px-6 py-3 font-body text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90 disabled:opacity-40 disabled:cursor-not-allowed"
-        >
-          {t("I'm interested in this unit", 'أنا مهتم بهذه الوحدة')}
-        </button>
+        {/* ── Information Panel ── */}
+        <div className={`flex flex-col justify-between p-8 md:p-10 lg:p-12 ${isEven ? 'md:direction-ltr' : ''}`}>
+          {/* Top: title + availability */}
+          <div>
+            {/* Availability badge */}
+            <span
+              className={`mb-5 inline-flex items-center gap-1.5 rounded-full border px-4 py-1.5 font-body text-xs font-bold uppercase tracking-wider ${availColors[unit.availability_status]}`}
+            >
+              <span className={`inline-block h-2 w-2 rounded-full ${
+                unit.availability_status === 'available' ? 'bg-green-500' :
+                unit.availability_status === 'reserved' ? 'bg-amber-500' : 'bg-muted-foreground'
+              }`} />
+              {t(avail.en, avail.ar)}
+            </span>
+
+            {/* Title */}
+            <h3 className="font-display text-2xl font-bold text-foreground md:text-3xl leading-tight mb-3">
+              {title}
+            </h3>
+
+            {/* Description */}
+            <p className="font-body text-sm leading-relaxed text-muted-foreground mb-8 max-w-md">
+              {desc}
+            </p>
+
+            {/* ── Specification Grid ── */}
+            <div className="mb-6">
+              <h4 className="font-body text-[11px] font-bold uppercase tracking-[0.2em] text-muted-foreground mb-4">
+                {t('Specifications', 'المواصفات')}
+              </h4>
+              <div className="grid grid-cols-2 gap-x-6 gap-y-4">
+                {specs.map((spec, i) => (
+                  <div key={i} className="flex items-center gap-3">
+                    <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-muted text-primary">
+                      {spec.icon}
+                    </span>
+                    <div className="min-w-0">
+                      <p className="font-body text-[11px] uppercase tracking-wider text-muted-foreground">{spec.label}</p>
+                      <p className="font-body text-sm font-semibold text-foreground">{spec.value}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* ── Boolean specs ── */}
+            <div className="flex flex-wrap gap-x-6 gap-y-2 mb-6">
+              {boolSpecs.map((bs, i) => (
+                <div key={i} className="flex items-center gap-2 font-body text-sm text-muted-foreground">
+                  {bs.value
+                    ? <Check size={15} className="text-green-600" />
+                    : <X size={15} className="text-muted-foreground/50" />
+                  }
+                  <span className={bs.value ? 'text-foreground font-medium' : ''}>{bs.label}</span>
+                </div>
+              ))}
+            </div>
+
+            {/* ── Extra features ── */}
+            {unit.extra_features.length > 0 && (
+              <div className="mb-8">
+                <h4 className="font-body text-[11px] font-bold uppercase tracking-[0.2em] text-muted-foreground mb-3">
+                  {t('Additional Features', 'ميزات إضافية')}
+                </h4>
+                <div className="flex flex-wrap gap-2">
+                  {unit.extra_features.map((feat, i) => (
+                    <span key={i} className="rounded-full border border-border bg-muted/50 px-3 py-1 font-body text-xs text-foreground">
+                      {feat}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* ── Price ── */}
+            {unit.price_starting_from && (
+              <div className="mb-8 border-t border-border pt-6">
+                <p className="font-body text-xs uppercase tracking-wider text-muted-foreground mb-1">
+                  {t('Starting from', 'يبدأ من')}
+                </p>
+                <p className="font-display text-2xl font-bold text-foreground">
+                  {unit.price_starting_from.toLocaleString()}{' '}
+                  <span className="text-base font-normal text-muted-foreground">{t('OMR', 'ر.ع.')}</span>
+                </p>
+              </div>
+            )}
+          </div>
+
+          {/* Bottom: CTA */}
+          <button
+            onClick={() => onInterest(unit)}
+            disabled={unit.availability_status === 'sold'}
+            className="w-full rounded-lg bg-gradient-gold px-6 py-4 font-body text-sm font-bold uppercase tracking-wider text-primary-foreground transition-all hover:opacity-90 hover:shadow-lg disabled:opacity-30 disabled:cursor-not-allowed"
+          >
+            {t("I'm Interested in This Unit", 'أنا مهتم بهذه الوحدة')}
+          </button>
+        </div>
       </div>
-    </div>
+    </article>
   );
 };
 
