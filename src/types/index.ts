@@ -27,6 +27,7 @@ export interface Unit {
   title_ar: string;
   style_code: string;
   brochure_image: string;
+  gallery_images?: string[];
   description_en: string;
   description_ar: string;
   availability_status: 'available' | 'reserved' | 'sold';
