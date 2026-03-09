@@ -142,21 +142,29 @@ const PropertyDetails = () => {
         </div>
       </section>
 
-      {/* Unit Styles */}
+      {/* Unit Catalogue */}
       {units.length > 0 && (
-        <section className="section-padding bg-secondary">
+        <section className="py-24 md:py-32 bg-secondary">
           <div className="container-premium">
-            <div className="mb-12">
-              <p className="mb-2 font-body text-sm font-semibold uppercase tracking-[0.2em] text-primary">
+            {/* Section header */}
+            <div className="mb-16 max-w-2xl">
+              <div className="mb-4 h-px w-16 bg-gradient-gold" />
+              <p className="mb-3 font-body text-xs font-bold uppercase tracking-[0.25em] text-primary">
                 {t('Unit Catalogue', 'كتالوج الوحدات')}
               </p>
-              <h2 className="font-display text-3xl font-bold text-foreground md:text-4xl">
+              <h2 className="font-display text-3xl font-bold text-foreground md:text-4xl lg:text-5xl leading-tight">
                 {t('Available Unit Styles', 'أنماط الوحدات المتاحة')}
               </h2>
+              <p className="mt-4 font-body text-base text-muted-foreground leading-relaxed max-w-lg">
+                {t(
+                  'Browse our carefully designed unit styles, each crafted to offer the finest living experience.',
+                  'تصفح أنماط الوحدات المصممة بعناية، كل منها مُعد لتقديم أرقى تجربة معيشية.'
+                )}
+              </p>
             </div>
-            <div className="space-y-8">
-              {units.map((unit) => (
-                <UnitStyleCard key={unit.id} unit={unit} onInterest={handleUnitInterest} />
+            <div className="space-y-12">
+              {units.map((unit, i) => (
+                <UnitStyleCard key={unit.id} unit={unit} onInterest={handleUnitInterest} index={i} />
               ))}
             </div>
           </div>
