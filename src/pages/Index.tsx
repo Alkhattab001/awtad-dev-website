@@ -11,6 +11,7 @@ import property1 from '@/assets/property-1.jpg';
 import property2 from '@/assets/property-2.jpg';
 import property3 from '@/assets/property-3.jpg';
 import aboutImg from '@/assets/about-awtad.jpeg';
+import ctaBg from '@/assets/cta-bg.jpeg';
 import type { Easing } from 'framer-motion';
 import { useRef, useState, useEffect } from 'react';
 import type { Property } from '@/types';
@@ -286,7 +287,7 @@ const Index = () => {
       {/* ─── FINAL CTA ─── */}
       <section className="relative py-32 overflow-hidden">
         <div className="absolute inset-0">
-          <img src={heroImg} alt="" className="h-full w-full object-cover" />
+          <img src={ctaBg} alt="" className="h-full w-full object-cover" />
           <div className="absolute inset-0 bg-charcoal/75" />
         </div>
         <div className="container-premium relative z-10 text-center">
