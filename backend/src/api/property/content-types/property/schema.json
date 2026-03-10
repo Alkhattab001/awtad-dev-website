@@ -44,6 +44,10 @@
       "type": "integer",
       "default": 0
     },
+    "kitchens": {
+      "type": "integer",
+      "default": 1
+    },
     "living_rooms": {
       "type": "integer",
       "default": 0

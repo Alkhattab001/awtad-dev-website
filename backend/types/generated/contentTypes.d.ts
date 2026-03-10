@@ -581,6 +581,7 @@ export interface ApiPropertyProperty extends Struct.CollectionTypeSchema {
     floors: Schema.Attribute.Integer & Schema.Attribute.DefaultTo<1>;
     gallery: Schema.Attribute.Media<'images', true>;
     image: Schema.Attribute.Media<'images'>;
+    kitchens: Schema.Attribute.Integer & Schema.Attribute.DefaultTo<1>;
     living_rooms: Schema.Attribute.Integer & Schema.Attribute.DefaultTo<0>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<

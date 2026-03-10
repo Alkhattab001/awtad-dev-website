@@ -37,6 +37,7 @@ export interface Unit {
   area_sqm: number;
   bedrooms: number;
   bathrooms: number;
+  kitchens: number;
   balconies: number;
   living_rooms: number;
   working_rooms: number;

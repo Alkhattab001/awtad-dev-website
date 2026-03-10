@@ -54,6 +54,7 @@ interface StrapiProperty {
   area: number;
   bedrooms: number;
   bathrooms: number;
+  kitchens: number;
   property_status: 'available' | 'reserved' | 'sold';
   property_type: string;
   floors: number;
@@ -246,6 +247,7 @@ const mockUnits: Unit[] = [
     area_sqm: 75,
     bedrooms: 1,
     bathrooms: 1,
+    kitchens: 1,
     balconies: 1,
     living_rooms: 1,
     working_rooms: 0,
@@ -269,6 +271,7 @@ const mockUnits: Unit[] = [
     area_sqm: 120,
     bedrooms: 2,
     bathrooms: 2,
+    kitchens: 1,
     balconies: 1,
     living_rooms: 1,
     working_rooms: 1,
@@ -292,6 +295,7 @@ const mockUnits: Unit[] = [
     area_sqm: 210,
     bedrooms: 3,
     bathrooms: 3,
+    kitchens: 2,
     balconies: 2,
     living_rooms: 2,
     working_rooms: 1,
@@ -315,6 +319,7 @@ const mockUnits: Unit[] = [
     area_sqm: 350,
     bedrooms: 4,
     bathrooms: 4,
+    kitchens: 2,
     balconies: 2,
     living_rooms: 2,
     working_rooms: 1,
@@ -390,6 +395,7 @@ function mapPropertyToUnit(prop: StrapiProperty, buildingId: string): Unit {
     area_sqm: prop.area || 0,
     bedrooms: prop.bedrooms || 0,
     bathrooms: prop.bathrooms || 0,
+    kitchens: prop.kitchens || 1,
     balconies: prop.balconies || 0,
     living_rooms: prop.living_rooms || 1,
     working_rooms: prop.working_rooms || 0,
