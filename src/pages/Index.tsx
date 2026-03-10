@@ -56,9 +56,9 @@ const Index = () => {
   ];
 
   const articles = [
-    { title: t('The Future of Luxury Living in Muscat', 'مستقبل الحياة الفاخرة في مسقط'), cat: t('Insights', 'رؤى'), date: t('Feb 2026', 'فبراير 2026'), image: property1, excerpt: t('Exploring the evolving landscape of premium residential developments across the Sultanate.', 'استكشاف المشهد المتطور للمشاريع السكنية الفاخرة في السلطنة.') },
-    { title: t('Sustainable Design in Modern Architecture', 'التصميم المستدام في العمارة الحديثة'), cat: t('Architecture', 'عمارة'), date: t('Jan 2026', 'يناير 2026'), image: heroImg, excerpt: t('How contemporary developers are integrating green building principles without compromising luxury.', 'كيف يدمج المطورون مبادئ البناء الأخضر دون المساومة على الفخامة.') },
-    { title: t('Why Oman is the Next Investment Hub', 'لماذا عُمان هي مركز الاستثمار القادم'), cat: t('Market', 'السوق'), date: t('Dec 2025', 'ديسمبر 2025'), image: property1, excerpt: t('A comprehensive look at market trends positioning the Sultanate as a prime destination for property investment.', 'نظرة شاملة على اتجاهات السوق التي تضع السلطنة كوجهة رئيسية للاستثمار العقاري.') },
+    { title: t('Oman Real Estate Market Analysis 2026', 'تحليل سوق العقارات العماني 2026'), cat: t('Market', 'السوق'), date: t('2026', '2026'), image: property1, excerpt: t('Comprehensive analysis of Oman\'s property market performance, trends, and investment opportunities.', 'تحليل شامل لأداء سوق العقارات العماني واتجاهاته وفرص الاستثمار.'), link: 'https://sandsofwealth.com/blogs/news/oman-real-estate-market' },
+    { title: t('Best Areas to Buy Property in Muscat', 'أفضل مناطق شراء العقارات في مسقط'), cat: t('Insights', 'رؤى'), date: t('2026', '2026'), image: heroImg, excerpt: t('Discover the top neighborhoods and areas for property investment in Muscat, from Al Mouj to Sultan Haitham City.', 'اكتشف أفضل الأحياء والمناطق للاستثمار العقاري في مسقط.'), link: 'https://sandsofwealth.com/blogs/news/muscat-which-area' },
+    { title: t('Property Market Outlook Oman 2026', 'توقعات سوق العقارات في عُمان 2026'), cat: t('Analysis', 'تحليل'), date: t('2026', '2026'), image: property1, excerpt: t('Expert insights on Oman\'s property market outlook, price trends, and what to expect in the coming year.', 'رؤى الخبراء حول توقعات سوق العقارات العماني واتجاهات الأسعار.'), link: 'https://sandsofwealth.com/blogs/news/market-outlook-oman' },
   ];
 
   return (
@@ -260,19 +260,21 @@ const Index = () => {
           <div className="grid gap-8 md:grid-cols-3">
             {articles.map((a, i) => (
               <ScrollReveal key={i} delay={i * 0.12}>
-                <article className="group cursor-pointer">
-                  <div className="relative aspect-[16/10] overflow-hidden rounded-sm mb-5">
-                    <img src={a.image} alt={a.title} className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
-                    <div className="absolute inset-0 bg-charcoal/0 transition-colors group-hover:bg-charcoal/10" />
-                  </div>
-                  <div className="flex items-center gap-3 mb-3">
-                    <span className="font-body text-xs font-semibold uppercase tracking-wider text-primary">{a.cat}</span>
-                    <span className="h-1 w-1 rounded-full bg-border" />
-                    <span className="font-body text-xs text-muted-foreground">{a.date}</span>
-                  </div>
-                  <h3 className="font-display text-xl font-semibold text-foreground leading-snug mb-2 group-hover:text-primary transition-colors">{a.title}</h3>
-                  <p className="font-body text-sm text-muted-foreground leading-relaxed line-clamp-2">{a.excerpt}</p>
-                </article>
+                <a href={a.link} target="_blank" rel="noopener noreferrer" className="group block">
+                  <article>
+                    <div className="relative aspect-[16/10] overflow-hidden rounded-sm mb-5">
+                      <img src={a.image} alt={a.title} className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                      <div className="absolute inset-0 bg-charcoal/0 transition-colors group-hover:bg-charcoal/10" />
+                    </div>
+                    <div className="flex items-center gap-3 mb-3">
+                      <span className="font-body text-xs font-semibold uppercase tracking-wider text-primary">{a.cat}</span>
+                      <span className="h-1 w-1 rounded-full bg-border" />
+                      <span className="font-body text-xs text-muted-foreground">{a.date}</span>
+                    </div>
+                    <h3 className="font-display text-xl font-semibold text-foreground leading-snug mb-2 group-hover:text-primary transition-colors">{a.title}</h3>
+                    <p className="font-body text-sm text-muted-foreground leading-relaxed line-clamp-2">{a.excerpt}</p>
+                  </article>
+                </a>
               </ScrollReveal>
             ))}
           </div>
