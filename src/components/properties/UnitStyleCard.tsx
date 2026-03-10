@@ -28,14 +28,16 @@ const UnitStyleCard = ({ unit, onInterest, index }: Props) => {
   const avail = availLabels[unit.availability_status];
   const isEven = index % 2 === 1;
 
-  const specs = [
-    { icon: <Maximize size={18} />, label: t('Area', 'المساحة'), value: `${unit.area_sqm} ${t('sqm', 'م²')}` },
-    { icon: <BedDouble size={18} />, label: t('Bedrooms', 'غرف النوم'), value: unit.bedrooms },
-    { icon: <Bath size={18} />, label: t('Bathrooms', 'الحمامات'), value: unit.bathrooms },
-    { icon: <Gem size={18} />, label: t('Balconies', 'الشرفات'), value: unit.balconies },
-    { icon: <Waves size={18} />, label: t('Living Rooms', 'الصالات'), value: unit.living_rooms },
-    { icon: <Building2 size={18} />, label: t('Floors', 'الطوابق'), value: unit.floor || 1 },
+  const allSpecs = [
+    { icon: <Maximize size={18} />, label: t('Area', 'المساحة'), value: `${unit.area_sqm} ${t('sqm', 'م²')}`, show: unit.area_sqm > 0 },
+    { icon: <BedDouble size={18} />, label: t('Bedrooms', 'غرف النوم'), value: unit.bedrooms, show: unit.bedrooms > 0 },
+    { icon: <Bath size={18} />, label: t('Bathrooms', 'الحمامات'), value: unit.bathrooms, show: unit.bathrooms > 0 },
+    { icon: <Gem size={18} />, label: t('Balconies', 'الشرفات'), value: unit.balconies, show: unit.balconies > 0 },
+    { icon: <Waves size={18} />, label: t('Living Rooms', 'الصالات'), value: unit.living_rooms, show: unit.living_rooms > 0 },
+    { icon: <Building2 size={18} />, label: t('Floors', 'الطوابق'), value: unit.floor, show: unit.floor && unit.floor !== '0' && unit.floor !== '1' },
   ];
+
+  const specs = allSpecs.filter(spec => spec.show);
 
   
   return (
