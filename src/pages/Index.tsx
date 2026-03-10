@@ -73,7 +73,7 @@ const Index = () => {
         <motion.div className="container-premium relative z-10" style={{ opacity: heroOpacity }}>
           <motion.div initial="hidden" animate="visible" className="max-w-5xl text-center mx-auto">
             <motion.div variants={fadeUp} custom={0} className="mb-8 h-px w-16 bg-gradient-gold mx-auto" />
-            <motion.p variants={fadeUp} custom={0} className="mb-5 font-body text-xs font-semibold uppercase tracking-[0.35em] text-gold-light">
+            <motion.p variants={fadeUp} custom={0} className="mb-5 font-body text-sm font-semibold uppercase tracking-[0.25em] text-gold-light">
               {t('Defining Luxury Living in Oman', 'نعيد تعريف الحياة الفاخرة في عُمان')}
             </motion.p>
             <motion.h1 variants={fadeUp} custom={1} className="font-display text-5xl font-bold leading-[1.1] text-cream md:text-7xl lg:text-8xl">
@@ -81,7 +81,7 @@ const Index = () => {
               <span className="text-gradient-gold">{t('Landmarks', 'معالم')}</span><br />
               {t('of Tomorrow', 'الغد')}
             </motion.h1>
-            <motion.p variants={fadeUp} custom={2} className="mt-7 max-w-xl mx-auto font-body text-base leading-relaxed text-cream/70 md:text-lg">
+            <motion.p variants={fadeUp} custom={2} className="mt-7 max-w-2xl mx-auto font-body text-lg leading-relaxed text-cream/70 md:text-xl">
               {t(
                 'Premium developments combining world-class design, strategic locations, and enduring value across the Sultanate of Oman.',
                 'مشاريع فاخرة تجمع بين التصميم العالمي والمواقع الاستراتيجية والقيمة الدائمة في سلطنة عُمان.'
