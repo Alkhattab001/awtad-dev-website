@@ -8,6 +8,8 @@ import AnimatedCounter from '@/components/shared/AnimatedCounter';
 import { getProperties } from '@/services/api';
 import heroImg from '@/assets/hero-main.jpeg';
 import property1 from '@/assets/property-1.jpg';
+import property2 from '@/assets/property-2.jpg';
+import property3 from '@/assets/property-3.jpg';
 import aboutImg from '@/assets/about-awtad.jpeg';
 import type { Easing } from 'framer-motion';
 import { useRef, useState, useEffect } from 'react';
@@ -57,8 +59,8 @@ const Index = () => {
 
   const articles = [
     { title: t('Oman Real Estate Market Analysis 2026', 'تحليل سوق العقارات العماني 2026'), cat: t('Market', 'السوق'), date: t('2026', '2026'), image: property1, excerpt: t('Comprehensive analysis of Oman\'s property market performance, trends, and investment opportunities.', 'تحليل شامل لأداء سوق العقارات العماني واتجاهاته وفرص الاستثمار.'), link: 'https://sandsofwealth.com/blogs/news/oman-real-estate-market' },
-    { title: t('Best Areas to Buy Property in Muscat', 'أفضل مناطق شراء العقارات في مسقط'), cat: t('Insights', 'رؤى'), date: t('2026', '2026'), image: heroImg, excerpt: t('Discover the top neighborhoods and areas for property investment in Muscat, from Al Mouj to Sultan Haitham City.', 'اكتشف أفضل الأحياء والمناطق للاستثمار العقاري في مسقط.'), link: 'https://sandsofwealth.com/blogs/news/muscat-which-area' },
-    { title: t('Property Market Outlook Oman 2026', 'توقعات سوق العقارات في عُمان 2026'), cat: t('Analysis', 'تحليل'), date: t('2026', '2026'), image: property1, excerpt: t('Expert insights on Oman\'s property market outlook, price trends, and what to expect in the coming year.', 'رؤى الخبراء حول توقعات سوق العقارات العماني واتجاهات الأسعار.'), link: 'https://sandsofwealth.com/blogs/news/market-outlook-oman' },
+    { title: t('Best Areas to Buy Property in Muscat', 'أفضل مناطق شراء العقارات في مسقط'), cat: t('Insights', 'رؤى'), date: t('2026', '2026'), image: property2, excerpt: t('Discover the top neighborhoods and areas for property investment in Muscat, from Al Mouj to Sultan Haitham City.', 'اكتشف أفضل الأحياء والمناطق للاستثمار العقاري في مسقط.'), link: 'https://sandsofwealth.com/blogs/news/muscat-which-area' },
+    { title: t('Property Market Outlook Oman 2026', 'توقعات سوق العقارات في عُمان 2026'), cat: t('Analysis', 'تحليل'), date: t('2026', '2026'), image: property3, excerpt: t('Expert insights on Oman\'s property market outlook, price trends, and what to expect in the coming year.', 'رؤى الخبراء حول توقعات سوق العقارات العماني واتجاهات الأسعار.'), link: 'https://sandsofwealth.com/blogs/news/market-outlook-oman' },
   ];
 
   return (
