@@ -386,7 +386,21 @@ export async function getUnitsByProperty(buildingId: string): Promise<Unit[]> {
   return mockUnits.filter((u) => u.property_id === buildingId);
 }
 
+// Property type translations
+const propertyTypeAr: Record<string, string> = {
+  apartment: 'شقة',
+  villa: 'فيلا',
+  penthouse: 'بنتهاوس',
+  studio: 'استوديو',
+  duplex: 'دوبلكس',
+  townhouse: 'تاون هاوس',
+  office: 'مكتب',
+  shop: 'محل',
+  warehouse: 'مستودع',
+};
+
 function mapPropertyToUnit(prop: StrapiProperty, buildingId: string): Unit {
+  const typeAr = propertyTypeAr[prop.property_type?.toLowerCase()] || prop.property_type;
   return {
     id: prop.documentId || String(prop.id),
     property_id: buildingId,
@@ -395,7 +409,7 @@ function mapPropertyToUnit(prop: StrapiProperty, buildingId: string): Unit {
     style_code: prop.property_type?.toUpperCase() || 'TYPE',
     brochure_image: getImageUrl(prop.floorplan || prop.image),
     description_en: prop.description || `${prop.bedrooms} bedroom ${prop.property_type} with ${prop.area} sqm`,
-    description_ar: prop.description_ar || `${prop.property_type} بـ ${prop.bedrooms} غرف نوم بمساحة ${prop.area} متر مربع`,
+    description_ar: prop.description_ar || `${typeAr} بـ ${prop.bedrooms} غرف نوم بمساحة ${prop.area} متر مربع`,
     availability_status: prop.property_status || 'available',
     price_starting_from: prop.price || 0,
     area_sqm: prop.area || 0,
