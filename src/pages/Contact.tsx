@@ -9,7 +9,7 @@ const Contact = () => {
 
   const contactInfo = [
     { icon: <MapPin size={20} />, title: t('Visit Us', 'زورونا'), detail: t('Muscat, Oman', 'مسقط، عُمان') },
-    { icon: <Phone size={20} />, title: t('Call Us', 'اتصل بنا'), detail: '+968 9559 9902' },
+    { icon: <Phone size={20} />, title: t('Call Us', 'اتصل بنا'), detail: <span dir="ltr">+968 9559 9902</span> },
         { icon: <Clock size={20} />, title: t('Working Hours', 'ساعات العمل'), detail: t('Sun – Thu: 8AM – 5PM', 'الأحد – الخميس: 8ص – 5م') },
   ];
 
