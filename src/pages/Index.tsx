@@ -74,7 +74,7 @@ const Index = () => {
           <motion.div initial="hidden" animate="visible" className="max-w-5xl text-center mx-auto">
             <motion.div variants={fadeUp} custom={0} className="mb-8 h-px w-16 bg-gradient-gold mx-auto" />
             <motion.p variants={fadeUp} custom={0} className="mb-5 font-body text-sm font-semibold uppercase tracking-[0.25em] text-gold-light">
-              {t('Defining Luxury Living in Oman', 'نعيد تعريف الحياة الفاخرة في عُمان')}
+              {t('Defining Luxury Living in Oman', 'حيث تبدأ الفخامة')}
             </motion.p>
             <motion.h1 variants={fadeUp} custom={1} className="font-display text-5xl font-bold leading-[1.1] text-cream md:text-7xl lg:text-8xl">
               {t('Building', 'نبني')}<br />
