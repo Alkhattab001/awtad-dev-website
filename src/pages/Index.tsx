@@ -8,6 +8,7 @@ import AnimatedCounter from '@/components/shared/AnimatedCounter';
 import { getProperties } from '@/services/api';
 import heroImg from '@/assets/hero-main.jpg';
 import property1 from '@/assets/property-1.jpg';
+import aboutImg from '@/assets/about-awtad.jpeg';
 import type { Easing } from 'framer-motion';
 import { useRef, useState, useEffect } from 'react';
 import type { Property } from '@/types';
@@ -193,7 +194,7 @@ const Index = () => {
           </ScrollReveal>
           <ScrollReveal direction="right" delay={0.2} className="relative">
             <div className="relative overflow-hidden rounded-sm">
-              <img src={property1} alt="About Awtad" className="w-full aspect-[4/5] object-cover" />
+              <img src={aboutImg} alt="About Awtad" className="w-full aspect-[4/5] object-cover" />
               <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-charcoal/80 to-transparent p-8 pt-20">
                 <div className="flex items-end gap-6">
                   <div>
