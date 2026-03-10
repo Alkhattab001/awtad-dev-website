@@ -50,6 +50,10 @@
       "type": "integer",
       "default": 0
     },
+    "working_rooms": {
+      "type": "integer",
+      "default": 0
+    },
     "property_status": {
       "type": "enumeration",
       "enum": ["available", "reserved", "sold"],

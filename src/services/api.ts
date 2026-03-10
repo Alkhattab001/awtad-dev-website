@@ -61,6 +61,7 @@ interface StrapiProperty {
   floors: number;
   living_rooms: number;
   balconies: number;
+  working_rooms: number;
   total_units: number;
   available_units: number;
   image?: { url: string };
@@ -148,6 +149,7 @@ function mapStrapiUnit(unit: StrapiUnit, propertyId: string): Unit {
     bathrooms: unit.bathrooms,
     balconies: 1,
     living_rooms: 1,
+    working_rooms: 0,
     floor: String(unit.floor),
         extra_features: [],
     created_at: unit.createdAt,
@@ -245,8 +247,9 @@ const mockUnits: Unit[] = [
     bathrooms: 1,
     balconies: 1,
     living_rooms: 1,
+    working_rooms: 0,
     floor: '3-12',
-        extra_features: ['Walk-in Closet', 'Built-in Kitchen'],
+    extra_features: ['Walk-in Closet', 'Built-in Kitchen'],
     created_at: '2024-01-15',
     updated_at: '2024-06-01',
   },
@@ -266,8 +269,9 @@ const mockUnits: Unit[] = [
     bathrooms: 2,
     balconies: 1,
     living_rooms: 1,
+    working_rooms: 1,
     floor: '5-18',
-        extra_features: ['Master En-suite', 'Storage Room', 'Utility Balcony'],
+    extra_features: ['Master En-suite', 'Storage Room', 'Utility Balcony'],
     created_at: '2024-01-15',
     updated_at: '2024-06-01',
   },
@@ -287,8 +291,9 @@ const mockUnits: Unit[] = [
     bathrooms: 3,
     balconies: 2,
     living_rooms: 2,
+    working_rooms: 1,
     floor: '19-20',
-        extra_features: ['Private Terrace', 'Jacuzzi', 'Double Parking', 'Private Elevator'],
+    extra_features: ['Private Terrace', 'Jacuzzi', 'Double Parking', 'Private Elevator'],
     created_at: '2024-01-15',
     updated_at: '2024-06-01',
   },
@@ -308,8 +313,9 @@ const mockUnits: Unit[] = [
     bathrooms: 4,
     balconies: 2,
     living_rooms: 2,
+    working_rooms: 1,
     floor: 'G+1',
-        extra_features: ['Private Garden', 'Double Garage', 'Majlis', 'Storage'],
+    extra_features: ['Private Garden', 'Double Garage', 'Majlis', 'Storage'],
     created_at: '2023-08-10',
     updated_at: '2024-05-20',
   },
@@ -381,6 +387,7 @@ function mapPropertyToUnit(prop: StrapiProperty, buildingId: string): Unit {
     bathrooms: prop.bathrooms || 0,
     balconies: prop.balconies || 0,
     living_rooms: prop.living_rooms || 1,
+    working_rooms: prop.working_rooms || 0,
     floor: prop.floors ? String(prop.floors) : '1',
         extra_features: [],
     total_units: prop.total_units || 0,

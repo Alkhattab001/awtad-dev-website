@@ -39,6 +39,7 @@ export interface Unit {
   bathrooms: number;
   balconies: number;
   living_rooms: number;
+  working_rooms: number;
   floor: string;
   extra_features: string[];
   total_units?: number;

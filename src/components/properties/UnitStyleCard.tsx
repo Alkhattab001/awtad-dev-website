@@ -1,5 +1,5 @@
 import { useLanguage } from '@/context/LanguageContext';
-import { BedDouble, Bath, Maximize, Building2, Gem, Waves } from 'lucide-react';
+import { BedDouble, Bath, Maximize, Building2, Gem, Waves, Briefcase } from 'lucide-react';
 import type { Unit } from '@/types';
 import UnitImageGallery from './UnitImageGallery';
 
@@ -34,6 +34,7 @@ const UnitStyleCard = ({ unit, onInterest, index }: Props) => {
     { icon: <Bath size={18} />, label: t('Bathrooms', 'الحمامات'), value: unit.bathrooms, show: unit.bathrooms > 0 },
     { icon: <Gem size={18} />, label: t('Balconies', 'الشرفات'), value: unit.balconies, show: unit.balconies > 0 },
     { icon: <Waves size={18} />, label: t('Living Rooms', 'الصالات'), value: unit.living_rooms, show: unit.living_rooms > 0 },
+    { icon: <Briefcase size={18} />, label: t('Working Rooms', 'غرف العمل'), value: unit.working_rooms, show: unit.working_rooms > 0 },
     { icon: <Building2 size={18} />, label: t('Floors', 'الطوابق'), value: unit.floor, show: unit.floor && unit.floor !== '0' && unit.floor !== '1' },
   ];
 
