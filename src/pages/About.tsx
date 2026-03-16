@@ -5,6 +5,7 @@ import { Award, Users, Target, Eye } from 'lucide-react';
 import ScrollReveal from '@/components/shared/ScrollReveal';
 import aboutHero from '@/assets/about-hero.jpg';
 import heroImg from '@/assets/hero-main.jpeg';
+import saidProfile from '@/assets/said-profile.jpeg';
 import { useRef } from 'react';
 
 const About = () => {
@@ -14,7 +15,7 @@ const About = () => {
   const heroScale = useTransform(scrollYProgress, [0, 1], [1, 1.1]);
 
   const team = [
-    { name: t('Said Al Maawali', 'سعيد المعولي'), role: t('Chief Executive Officer', 'الرئيس التنفيذي') },
+    { name: t('Said Al Maawali', 'سعيد المعولي'), role: t('Chief Executive Officer', 'الرئيس التنفيذي'), image: saidProfile },
   ];
 
   return (
@@ -120,8 +121,8 @@ const About = () => {
           <div className="flex justify-center">
             {team.map((member, i) => (
               <ScrollReveal key={i} delay={i * 0.1} className="text-center">
-                <div className="mx-auto mb-4 flex h-24 w-24 items-center justify-center rounded-full bg-muted transition-transform duration-300 hover:scale-105">
-                  <Users size={32} className="text-muted-foreground" />
+                <div className="mx-auto mb-4 h-32 w-32 overflow-hidden rounded-full border-4 border-primary/20 transition-transform duration-300 hover:scale-105">
+                  <img src={member.image} alt={member.name} className="h-full w-full object-cover" />
                 </div>
                 <h3 className="font-display text-lg font-semibold text-foreground">{member.name}</h3>
                 <p className="font-body text-sm text-muted-foreground">{member.role}</p>
