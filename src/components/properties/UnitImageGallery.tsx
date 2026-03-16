@@ -74,29 +74,6 @@ const UnitImageGallery = ({ images, alt }: Props) => {
           )}
         </div>
 
-        {/* Thumbnails */}
-        {hasMultiple && (
-          <div className="flex gap-2 border-t border-border bg-background/50 p-3">
-            {images.map((img, i) => (
-              <button
-                key={i}
-                onClick={() => setCurrent(i)}
-                className={cn(
-                  'relative h-14 w-14 shrink-0 overflow-hidden rounded-md border-2 transition-all md:h-16 md:w-16',
-                  i === current
-                    ? 'border-primary shadow-sm'
-                    : 'border-transparent opacity-60 hover:opacity-90'
-                )}
-              >
-                <img
-                  src={img}
-                  alt={`${alt} thumbnail ${i + 1}`}
-                  className="h-full w-full object-contain bg-muted/30"
-                />
-              </button>
-            ))}
-          </div>
-        )}
       </div>
 
       {/* Lightbox */}
