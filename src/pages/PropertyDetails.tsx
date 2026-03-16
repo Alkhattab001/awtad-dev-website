@@ -174,9 +174,9 @@ const PropertyDetails = () => {
             {/* Filters */}
             <UnitFilters units={units} onFilter={setFilteredUnits} />
 
-            <div className="grid gap-8 md:grid-cols-2 xl:grid-cols-3">
+            <div className="space-y-12">
               {filteredUnits.length === 0 ? (
-                <div className="py-16 text-center md:col-span-2 xl:col-span-3">
+                <div className="py-16 text-center">
                   <p className="font-body text-lg text-muted-foreground">
                     {t('No units match your filters.', 'لا توجد وحدات مطابقة للتصفية.')}
                   </p>

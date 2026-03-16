@@ -43,17 +43,18 @@ const UnitStyleCard = ({ unit, onInterest, index }: Props) => {
 
   
   return (
-    <article className="overflow-hidden rounded-xl border border-border bg-card shadow-sm h-full flex flex-col">
-      {/* ── Image Panel ── */}
-      <div className="group/img relative min-h-[280px] overflow-hidden">
-        <UnitImageGallery
-          images={unit.gallery_images?.length ? unit.gallery_images : [unit.brochure_image]}
-          alt={title}
-        />
-      </div>
+    <article className="overflow-hidden rounded-xl border border-border bg-card shadow-sm">
+      <div className={`grid md:grid-cols-2 ${isEven ? 'md:direction-rtl' : ''}`}>
+        {/* ── Image Panel ── */}
+        <div className="group/img relative min-h-[340px] md:min-h-[520px] overflow-hidden">
+          <UnitImageGallery
+            images={unit.gallery_images?.length ? unit.gallery_images : [unit.brochure_image]}
+            alt={title}
+          />
+        </div>
 
-      {/* ── Information Panel ── */}
-      <div className="flex flex-col justify-between p-6 md:p-8 flex-1">
+        {/* ── Information Panel ── */}
+        <div className={`flex flex-col justify-between p-8 md:p-10 lg:p-12 ${isEven ? 'md:direction-ltr' : ''}`}>
           {/* Top: title + availability */}
           <div>
             {/* Availability badge */}
@@ -128,14 +129,15 @@ const UnitStyleCard = ({ unit, onInterest, index }: Props) => {
             )}
           </div>
 
-        {/* Bottom: CTA */}
-        <button
-          onClick={() => onInterest(unit)}
-          disabled={unit.availability_status === 'sold'}
-          className="w-full rounded-lg bg-gradient-gold px-6 py-4 font-body text-sm font-bold uppercase tracking-wider text-primary-foreground transition-all hover:opacity-90 hover:shadow-lg disabled:opacity-30 disabled:cursor-not-allowed"
-        >
-          {t("I'm Interested in This Unit", 'أنا مهتم بهذه الوحدة')}
-        </button>
+          {/* Bottom: CTA */}
+          <button
+            onClick={() => onInterest(unit)}
+            disabled={unit.availability_status === 'sold'}
+            className="w-full rounded-lg bg-gradient-gold px-6 py-4 font-body text-sm font-bold uppercase tracking-wider text-primary-foreground transition-all hover:opacity-90 hover:shadow-lg disabled:opacity-30 disabled:cursor-not-allowed"
+          >
+            {t("I'm Interested in This Unit", 'أنا مهتم بهذه الوحدة')}
+          </button>
+        </div>
       </div>
     </article>
   );
