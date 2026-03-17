@@ -42,7 +42,7 @@ const Footer = () => {
               <li className="flex items-center gap-2 opacity-80 transition-opacity hover:opacity-100">
                 <MapPin size={14} className="shrink-0" />
                 <a href="https://maps.app.goo.gl/fDGkevP6VkFa3WRN8" target="_blank" rel="noopener noreferrer">
-                  {t('Muscat, Oman', 'مسقط، عُمان')}
+                  {t('18th November St, Muscat, Oman', 'شارع ١٨ نوفمبر ، مسقط، عُمان')}
                 </a>
               </li>
               <li className="flex items-center gap-2 opacity-80 transition-opacity hover:opacity-100">
