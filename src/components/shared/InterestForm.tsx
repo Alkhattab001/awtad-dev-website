@@ -69,7 +69,7 @@ const InterestForm = ({ inquiryType, propertyId, unitId, propertyName, unitName,
     }
   };
 
-  const inputClass = 'w-full rounded-md border border-border bg-background px-4 py-3 font-body text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/30 transition';
+  const inputClass = 'w-full rounded-md border border-border bg-background px-4 py-3 font-body text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/30 transition text-start';
 
   return (
     <form onSubmit={handleSubmit} className="space-y-5">

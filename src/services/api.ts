@@ -66,9 +66,7 @@ interface StrapiProperty {
   extra_features_ar?: string[];
   total_units: number;
   available_units: number;
-  image?: { url: string };
   gallery?: { url: string }[];
-  floorplan?: { url: string };
   amenities: string[];
   building?: StrapiBuilding;
   createdAt: string;
@@ -411,7 +409,7 @@ function mapPropertyToUnit(prop: StrapiProperty, buildingId: string): Unit {
     title_en: prop.name,
     title_ar: prop.name_ar || prop.name,
     style_code: prop.property_type?.toUpperCase() || 'TYPE',
-    brochure_image: getImageUrl(prop.floorplan || prop.image),
+    brochure_image: prop.gallery?.[0] ? getImageUrl(prop.gallery[0]) : floorplan1,
     gallery_images: prop.gallery?.map(img => getImageUrl(img)) || [],
     description_en: prop.description || `${prop.bedrooms} bedroom ${prop.property_type} with ${prop.area} sqm`,
     description_ar: prop.description_ar || `${typeAr} بـ ${prop.bedrooms} غرف نوم بمساحة ${prop.area} متر مربع`,

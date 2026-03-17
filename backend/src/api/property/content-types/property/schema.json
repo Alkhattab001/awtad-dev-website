@@ -86,21 +86,9 @@
       "enum": ["apartment", "villa", "penthouse", "studio", "townhouse", "commercial"],
       "required": true
     },
-    "image": {
-      "type": "media",
-      "multiple": false,
-      "required": false,
-      "allowedTypes": ["images"]
-    },
     "gallery": {
       "type": "media",
       "multiple": true,
-      "required": false,
-      "allowedTypes": ["images"]
-    },
-    "floorplan": {
-      "type": "media",
-      "multiple": false,
       "required": false,
       "allowedTypes": ["images"]
     },
