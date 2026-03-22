@@ -25,6 +25,7 @@ const schema = z.object({
 const InterestForm = ({ inquiryType, propertyId, unitId, propertyName, unitName, onClose }: Props) => {
   const { t, dir } = useLanguage();
   const [loading, setLoading] = useState(false);
+  const [honeypot, setHoneypot] = useState('');
   const [form, setForm] = useState<{
     full_name: string;
     phone: string;
@@ -58,6 +59,7 @@ const InterestForm = ({ inquiryType, propertyId, unitId, propertyName, unitName,
         inquiry_type: inquiryType,
         property_id: propertyId,
         unit_id: unitId,
+        honeypot,
       };
       await submitInterestForm(inquiry);
       toast.success(t('Thank you! We will be in touch shortly.', 'شكراً لك! سنتواصل معك قريباً.'));
@@ -79,6 +81,20 @@ const InterestForm = ({ inquiryType, propertyId, unitId, propertyName, unitName,
           {unitName && <p className="text-muted-foreground mt-1">{t('Unit', 'الوحدة')}: <span className="font-medium text-foreground">{unitName}</span></p>}
         </div>
       )}
+
+      {/* Honeypot - hidden from real users, bots will fill it */}
+      <div aria-hidden="true" style={{ position: 'absolute', left: '-9999px', opacity: 0, height: 0, overflow: 'hidden' }}>
+        <label htmlFor="company_name">Company</label>
+        <input
+          type="text"
+          id="company_name"
+          name="company_name"
+          tabIndex={-1}
+          autoComplete="off"
+          value={honeypot}
+          onChange={(e) => setHoneypot(e.target.value)}
+        />
+      </div>
 
       <div className="grid gap-4 md:grid-cols-2">
         <input
