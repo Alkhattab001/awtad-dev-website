@@ -441,6 +441,7 @@ export async function submitInterestForm(inquiry: Inquiry): Promise<{ success: b
       phone: inquiry.phone,
       message: inquiry.message || '',
       preferred_contact: inquiry.preferred_contact_method,
+      company_name: inquiry.honeypot || '',
     };
 
     // Add building relation if provided (property_id = building's documentId)

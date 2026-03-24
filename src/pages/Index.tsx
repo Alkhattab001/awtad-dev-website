@@ -69,7 +69,17 @@ const Index = () => {
       {/* ─── HERO ─── */}
       <section ref={heroRef} className="relative h-screen min-h-[700px] flex items-center justify-center overflow-hidden">
         <motion.div className="absolute inset-0" style={{ scale: heroScale }}>
-          <img src={heroImg} alt="Premium development" className="h-full w-full object-cover" />
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            poster={heroImg}
+            className="h-full w-full object-cover"
+          >
+            <source src="/hero-video.mp4" type="video/mp4" />
+            <img src={heroImg} alt="Premium development" className="h-full w-full object-cover" />
+          </video>
         </motion.div>
         <div className="absolute inset-0 bg-gradient-to-t from-charcoal via-charcoal/50 to-transparent" />
         <div className="absolute inset-0 bg-charcoal/20" />

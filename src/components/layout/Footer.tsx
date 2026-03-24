@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useLanguage } from '@/context/LanguageContext';
-import { MapPin, Phone } from 'lucide-react';
+import { MapPin, Phone, Instagram } from 'lucide-react';
 
 const Footer = () => {
   const { t } = useLanguage();
@@ -45,11 +45,18 @@ const Footer = () => {
                   {t('18th November St, Muscat, Oman', 'شارع ١٨ نوفمبر ، مسقط، عُمان')}
                 </a>
               </li>
-              <li className="flex items-center gap-2 opacity-80 transition-opacity hover:opacity-100">
-                <Phone size={14} className="shrink-0" />
-                <a href="tel:+96895599902" dir="ltr">+968 9559 9902</a>
+              <li className="flex items-start gap-2 opacity-80 transition-opacity hover:opacity-100">
+                <Phone size={14} className="shrink-0 mt-0.5" />
+                <span className="flex flex-col gap-1">
+                  <a href="tel:+96895599902" dir="ltr">+968 9559 9902</a>
+                  <a href="tel:+96895559902" dir="ltr">+968 9555 9902</a>
+                </span>
               </li>
-                          </ul>
+              <li className="flex items-center gap-2 opacity-80 transition-opacity hover:opacity-100">
+                <Instagram size={14} className="shrink-0" />
+                <a href="https://www.instagram.com/awtad.om9" target="_blank" rel="noopener noreferrer">@awtad.om9</a>
+              </li>
+            </ul>
           </div>
 
           {/* Newsletter */}

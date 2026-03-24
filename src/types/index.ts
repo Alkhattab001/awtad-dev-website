@@ -61,6 +61,7 @@ export interface Inquiry {
   preferred_contact_method: 'email' | 'phone' | 'whatsapp';
   message: string;
   inquiry_type: 'general' | 'project' | 'unit' | 'contact';
+  honeypot?: string;
   created_at?: string;
 }
 

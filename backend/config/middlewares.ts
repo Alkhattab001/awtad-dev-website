@@ -17,7 +17,21 @@ const config: Core.Config.Middlewares = [
       },
     },
   },
-  'strapi::cors',
+  {
+    name: 'strapi::cors',
+    config: {
+      origin: [
+        'https://awtad.om',
+        'https://www.awtad.om',
+        'https://admin.awtad.om',
+        'http://localhost:8080',
+        'http://localhost:5173',
+      ],
+      methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+      headers: ['Content-Type', 'Authorization'],
+      keepHeaderOnError: true,
+    },
+  },
   'strapi::poweredBy',
   'strapi::query',
   'strapi::body',
